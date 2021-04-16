@@ -1,0 +1,163 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b19cefa3bf552f94390d1c272b19ea6e, type: 3}
+  m_Name: Race Profile
+  m_EditorClassIdentifier: 
+  bufferPresets:
+    list:
+    - name: Default
+      sortingLayer:
+        name: Default
+        Order: 370
+      darknessColor: {r: 0.05660379, g: 0.05660379, b: 0.05660379, a: 1}
+      lightingResolution: 1
+      dayLayers:
+        list: []
+      nightLayers:
+        list:
+        - layer: 0
+          type: 0
+          sorting: 0
+        - layer: 1
+          type: 0
+          sorting: 0
+        - layer: 2
+          type: 0
+          sorting: 0
+  lightPresets:
+    list:
+    - name: Front Car Light
+      layerSetting:
+        list:
+        - layerID: 1
+          type: 2
+          sorting: 0
+          sortingIgnore: 0
+          shadowEffect: 0
+          shadowEffectLayer: 0
+          maskEffect: 0
+          maskEffectDistance: 1
+        - layerID: 2
+          type: 2
+          sorting: 0
+          sortingIgnore: 0
+          shadowEffect: 0
+          shadowEffectLayer: 0
+          maskEffect: 0
+          maskEffectDistance: 1
+        - layerID: 3
+          type: 2
+          sorting: 0
+          sortingIgnore: 0
+          shadowEffect: 0
+          shadowEffectLayer: 0
+          maskEffect: 2
+          maskEffectDistance: 1
+    - name: Rear Car Light
+      layerSetting:
+        list:
+        - layerID: 1
+          type: 2
+          sorting: 0
+          sortingIgnore: 0
+          shadowEffect: 0
+          shadowEffectLayer: 0
+          maskEffect: 0
+          maskEffectDistance: 1
+        - layerID: 2
+          type: 2
+          sorting: 0
+          sortingIgnore: 0
+          shadowEffect: 0
+          shadowEffectLayer: 0
+          maskEffect: 2
+          maskEffectDistance: 1
+        - layerID: 3
+          type: 2
+          sorting: 0
+          sortingIgnore: 0
+          shadowEffect: 0
+          shadowEffectLayer: 0
+          maskEffect: 0
+          maskEffectDistance: 1
+    - name: Lamp
+      layerSetting:
+        list:
+        - layerID: 1
+          type: 2
+          sorting: 0
+          sortingIgnore: 0
+          shadowEffect: 0
+          shadowEffectLayer: 0
+          maskEffect: 0
+          maskEffectDistance: 1
+        - layerID: 2
+          type: 0
+          sorting: 0
+          sortingIgnore: 0
+          shadowEffect: 0
+          shadowEffectLayer: 0
+          maskEffect: 0
+          maskEffectDistance: 1
+        - layerID: 3
+          type: 2
+          sorting: 0
+          sortingIgnore: 0
+          shadowEffect: 0
+          shadowEffectLayer: 0
+          maskEffect: 0
+          maskEffectDistance: 1
+  qualitySettings:
+    HDR: 1
+    lightTextureSize: 1
+    lightFilterMode: 1
+    updateMethod: 0
+  dayLightingSettings:
+    enable: 0
+    alpha: 1
+    direction: 112
+    height: 2.24
+    softness:
+      enable: 1
+      intensity: 0.5
+    bumpMap:
+      height: 1
+      strength: 1
+  fogOfWar:
+    filterMode: 1
+    enabled: 0
+    useOnlyInPlay: 0
+    bufferID: 0
+    sorting: 0
+    resolution: 1
+    sortingLayer:
+      name: Default
+      Order: 0
+  layers:
+    lightLayers:
+      names:
+      - Default
+      - Road
+      - Car
+      - Lamp
+    nightLayers:
+      names:
+      - Sprite Renderers
+      - Sprite Renderers Mask
+      - Lights
+    dayLayers:
+      names:
+      - Default
+      - Day Layer 1
+      - Day Layer 2
+      - Day Layer 3
+  disable: 0
