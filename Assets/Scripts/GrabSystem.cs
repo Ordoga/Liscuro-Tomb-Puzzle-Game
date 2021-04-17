@@ -15,39 +15,43 @@ public class GrabSystem : MonoBehaviour
     bool holderNearby;
     GameObject closestHolder;
     Collider2D collision, hangerCollision;
+    GameManager gameManager;
 
     void Start()
     {
         holderNearby = false;
         holdingLantern = false;
         detectRadius = GetComponent<CircleCollider2D>().radius;
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     private void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0)) // Left mouse clicked
+        if (gameManager.whiteActive && Input.GetKeyDown(KeyCode.Mouse0)) // Left mouse clicked
         {
             FindLanternsAndHangers();
 
             if (collision != null && !holdingLantern)     // If a lantern object was detected
             {
-                    PickUpLantern();
+                PickUpLantern();
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.Mouse1)) // Right mouse clicked
+        else
         {
-            FindLanternsAndHangers();
-
-            if(hangerCollision != null && holdingLantern) // If found a holder and holding lantern
+            if (gameManager.whiteActive && Input.GetKeyDown(KeyCode.Mouse1)) // Right mouse clicked
             {
-                closestHolder = hangerCollision.gameObject;
-                if (!closestHolder.GetComponent<LanternHolder>().occupied) // If holder is vacant
+                FindLanternsAndHangers();
+
+                if (hangerCollision != null && holdingLantern) // If found a holder and holding lantern
                 {
-                    PlaceLantern();
+                    closestHolder = hangerCollision.gameObject;
+                    if (!closestHolder.GetComponent<LanternHolder>().occupied) // If holder is vacant
+                    {
+                        PlaceLantern();
+                    }
                 }
+
             }
-            
         }
     }   
 

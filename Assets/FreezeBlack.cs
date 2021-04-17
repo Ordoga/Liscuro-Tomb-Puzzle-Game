@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FreezeBlack : MonoBehaviour
 {
+    [SerializeField] Sprite alarmed, relaxed;
     Rigidbody2D blackRb;
     Vector3 startingPos;
     private void Start()
@@ -24,6 +25,7 @@ public class FreezeBlack : MonoBehaviour
             Debug.Log("Light collision");
             blackRb.gameObject.GetComponent<DualMovementBlack2D>().frozen = true;
             blackRb.isKinematic = true;
+            blackRb.gameObject.GetComponent<SpriteRenderer>().sprite = alarmed;
         }
     }
 
@@ -35,6 +37,11 @@ public class FreezeBlack : MonoBehaviour
             Debug.Log("Uncollide Light");
             blackRb.gameObject.GetComponent<DualMovementBlack2D>().frozen = false;
             blackRb.isKinematic = false;
+            blackRb.gameObject.GetComponent<SpriteRenderer>().sprite = relaxed;
+        }
+        if (collision.gameObject.CompareTag("Confiner"))
+        {
+            MoveToStartingPos();
         }
     }
 
