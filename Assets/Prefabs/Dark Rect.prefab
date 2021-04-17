@@ -154,7 +154,9 @@ MonoBehaviour:
   handPos: {fileID: 3307212902736706343}
   tile: {fileID: 11400000, guid: 2190c01723a9e33478b1c58838dc99e8, type: 2}
   availablePlatformsNum: 3
-  location: {x: 0, y: 0, z: 0}
+  redHand: {fileID: 0}
+  RegularHand: {fileID: 0}
+  darkSpriteRenderer: {fileID: 0}
 --- !u!1 &8089974739786953807
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,6 +227,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e62eb9132f624945ba46cc948e8ba53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alarmed: {fileID: 21300000, guid: a8cd15e824c3570458087cf8ed8a10d4, type: 3}
+  relaxed: {fileID: 21300000, guid: c608c76d1a310ec4ea7574d85b63c262, type: 3}
 --- !u!1 &8521092584232394719
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,7 +307,7 @@ GameObject:
   - component: {fileID: 8521092586213956031}
   m_Layer: 10
   m_Name: Dark Rect
-  m_TagString: Untagged
+  m_TagString: DarkRect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

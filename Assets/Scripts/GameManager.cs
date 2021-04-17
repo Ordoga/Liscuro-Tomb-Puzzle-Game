@@ -9,10 +9,6 @@ public class GameManager : MonoBehaviour
     public bool darkPortalReady = false;
 
 
-    /*private DarkTeleport darkTeleport = FindObjectOfType<DarkTeleport>();
-    private LightTeleport lightTeleport = FindObjectOfType<LightTeleport>();*/
-
-
 
     private void Update()
     {
