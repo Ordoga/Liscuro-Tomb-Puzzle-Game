@@ -5,6 +5,14 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public bool whiteActive = true;
+    public bool lightPortalReady = false;
+    public bool darkPortalReady = false;
+
+
+    /*private DarkTeleport darkTeleport = FindObjectOfType<DarkTeleport>();
+    private LightTeleport lightTeleport = FindObjectOfType<LightTeleport>();*/
+
+
 
     private void Update()
     {
@@ -18,6 +26,12 @@ public class GameManager : MonoBehaviour
             {
                 whiteActive = true;
             }
+        }
+        if (lightPortalReady && darkPortalReady)
+        {
+            Debug.Log("NEXTSTAGE");
+            lightPortalReady = false;
+            darkPortalReady = false;
         }
     }
 

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Lantern Holder
   - Lantern
+  - DarkRect
+  - LightRect
   layers:
   - Default
   - TransparentFX
@@ -23,8 +25,8 @@ TagManager:
   - Lantern Holders
   - Tilemap
   - Dark Tilemap
-  - 
-  - 
+  - Dark Portal
+  - Light Portal
   - 
   - 
   - 
