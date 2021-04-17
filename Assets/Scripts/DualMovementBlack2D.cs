@@ -6,6 +6,7 @@ public class DualMovementBlack2D : MonoBehaviour
 {
     public CharacterController2D controller;
     public float moveSpeed = 40f;
+    public bool frozen = false;
 
     Vector2 movement;
     bool jump = false;
@@ -22,7 +23,7 @@ public class DualMovementBlack2D : MonoBehaviour
     }
     void Update()
     {
-        if (!gameManager.whiteActive)
+        if (!gameManager.whiteActive && !frozen)
         {
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
@@ -36,7 +37,7 @@ public class DualMovementBlack2D : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!gameManager.whiteActive)
+        if (!gameManager.whiteActive && !frozen)
         {
             controller.Move(movement.x * moveSpeed * Time.fixedDeltaTime, false, jump);
             jump = false;
