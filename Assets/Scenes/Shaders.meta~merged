@@ -1,14 +1,15 @@
 fileFormatVersion: 2
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream:Assets/Scenes/Shaders.meta
 guid: 9103b0fd901eea9459420bc10d599cf3
+folderAsset: yes
 =======
-guid: 719f2cc4cbe19ff469b2691844e7c313
->>>>>>> Stashed changes:Assets/SmartLighting2D/Resources/Shaders.meta
+<<<<<<< Updated upstream:Assets/Scenes/2D R4Z.unity.meta
+guid: f4e015694c797c246880d82e43ac5496
 =======
 guid: 395650f4169a3c3448f083291ee0f148
->>>>>>> Stashed changes
 folderAsset: yes
+>>>>>>> Stashed changes:Assets/Scenes/Shaders.meta
+>>>>>>> Stashed changes
 DefaultImporter:
   externalObjects: {}
   userData: 
