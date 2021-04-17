@@ -10,14 +10,18 @@ public class SetDarkTile : MonoBehaviour
     [SerializeField] Rigidbody2D handPos;
     [SerializeField] Tile tile;
     public int availablePlatformsNum;
-    public Vector3Int location;
+    private Vector3Int location;
 
     private TileBase getDarkTile;
     private TileBase getMapTile;
     GameManager gameManager;
 
+    [SerializeField] Sprite redHand;
+    [SerializeField] Sprite RegularHand;
+    [SerializeField] SpriteRenderer darkSpriteRenderer;
     void Start()
     {
+      
         availablePlatformsNum = 3;
         gameManager = FindObjectOfType<GameManager>();
     }
@@ -26,37 +30,42 @@ public class SetDarkTile : MonoBehaviour
     {
         if (!gameManager.whiteActive) 
         {
-            if(Input.GetMouseButtonDown(0) && (availablePlatformsNum > 0))
+            location = tiles.WorldToCell(handPos.position);
+            getDarkTile = darkTiles.GetTile(location);
+            getMapTile = tiles.GetTile(location);
+
+            darkSpriteRenderer.sprite = RegularHand;
+
+            if(getDarkTile || getMapTile) // Changes dark rect hand color to red if detect a tile 
             {
-                PlaceTile();
+                darkSpriteRenderer.sprite = redHand;
+            }
+
+            if (Input.GetMouseButtonDown(0) && (availablePlatformsNum > 0))
+            {
+                PlaceTile(location, getDarkTile, getMapTile);
             }
             if (Input.GetMouseButtonDown(1))
             {
-                RemoveTile();
+                RemoveTile(location, getDarkTile, getMapTile);
             }
 
         }
     }
 
-    private void PlaceTile()
+    private void PlaceTile(Vector3Int location, TileBase getDarkTile, TileBase getMapTile)
     {
-        location = tiles.WorldToCell(handPos.position);
-        getDarkTile = darkTiles.GetTile(location);
-        getMapTile = tiles.GetTile(location);
-
 
         if (!getMapTile && !getDarkTile)
         {
+            
             darkTiles.SetTile(location, tile);
             availablePlatformsNum -= 1;
         }
     }
 
-    private void RemoveTile()
+    private void RemoveTile(Vector3Int location, TileBase getDarkTile, TileBase getMapTile)
     {
-        location = tiles.WorldToCell(handPos.position);
-        getDarkTile = darkTiles.GetTile(location);
-        getMapTile = tiles.GetTile(location);
 
         if (getDarkTile && !getMapTile)
         {
@@ -64,5 +73,6 @@ public class SetDarkTile : MonoBehaviour
             availablePlatformsNum += 1;
         }
     }
+   // private void changeHandToRed()
 
 }
