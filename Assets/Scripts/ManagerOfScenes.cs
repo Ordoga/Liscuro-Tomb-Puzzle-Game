@@ -32,6 +32,7 @@ public class ManagerOfScenes : MonoBehaviour
 
     public void Resume()
     {
+        NextLevelUi.SetActive(false);
         pauseMenuUi.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
@@ -60,14 +61,18 @@ public class ManagerOfScenes : MonoBehaviour
     public void MainMenu()
     {
         SceneManager.LoadScene(0);
+        Resume();
     }
     public void NextLevel()
     {
+        Resume();
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     public void ChooseLevel()
     {
         SceneManager.LoadScene("Levels");
+        Resume();
     }
     public void LevelRestrictions()
     {
