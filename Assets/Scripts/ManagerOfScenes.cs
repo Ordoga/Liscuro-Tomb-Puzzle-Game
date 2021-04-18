@@ -10,6 +10,11 @@ public class ManagerOfScenes : MonoBehaviour
     public GameObject pauseMenuUi;
     public GameManager gameManager;
 
+
+    private void Start()
+    {
+        Resume();
+    }
     void Update()
     {
         if (gameManager.levelPassed)

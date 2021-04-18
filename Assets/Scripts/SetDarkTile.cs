@@ -22,7 +22,7 @@ public class SetDarkTile : MonoBehaviour
     void Start()
     {
       
-        availablePlatformsNum = 3;
+        //availablePlatformsNum = 3;
         gameManager = FindObjectOfType<GameManager>();
     }
     // Update is called once per frame
