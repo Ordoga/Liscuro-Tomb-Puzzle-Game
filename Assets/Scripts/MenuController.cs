@@ -146,8 +146,7 @@ namespace SpeedTutorMainMenuSystem
             if (buttonType == "LoadGame")
             {
                 menuDefaultCanvas.SetActive(false);
-                loadGameDialog.SetActive(true);
-                menuNumber = 8;
+                SceneManager.LoadScene("Levels");
             }
 
             if (buttonType == "NewGame")
@@ -259,29 +258,7 @@ namespace SpeedTutorMainMenuSystem
 
         public void ClickLoadGameDialog(string ButtonType)
         {
-            if (ButtonType == "Yes")
-            {
-                if (PlayerPrefs.HasKey("SavedLevel"))
-                {
-                    Debug.Log("I WANT TO LOAD THE SAVED GAME");
-                    //LOAD LAST SAVED SCENE
-                    levelToLoad = PlayerPrefs.GetString("SavedLevel");
-                    SceneManager.LoadScene(levelToLoad);
-                }
-
-                else
-                {
-                    Debug.Log("Load Game Dialog");
-                    menuDefaultCanvas.SetActive(false);
-                    loadGameDialog.SetActive(false);
-                    noSaveDialog.SetActive(true);
-                }
-            }
-
-            if (ButtonType == "No")
-            {
-                GoBackToMainMenu();
-            }
+            SceneManager.LoadScene("Levels");
         }
         #endregion
 

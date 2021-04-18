@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public bool whiteActive = true;
     public bool lightPortalReady = false;
     public bool darkPortalReady = false;
-
+    public bool levelPassed = false;
 
 
     private void Update()
@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
         }
         if (lightPortalReady && darkPortalReady)
         {
-            Debug.Log("NEXTSTAGE");
+            levelPassed = true;
             lightPortalReady = false;
             darkPortalReady = false;
         }
