@@ -8,19 +8,19 @@ using UnityEngine.UI;
 public class DarkTilesUIManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI DarkTilesText;
-    private SetDarkTile setDarkTile; //SetDarkTiles script to get reference to num of available tiles
+    private BuildSystem buildSystem; //SetDarkTiles script to get reference to num of available tiles
     private int availableNumOfDarkTiles;
       
 
     void Start()
     {
-        setDarkTile = FindObjectOfType<SetDarkTile>();
-        availableNumOfDarkTiles = setDarkTile.availablePlatformsNum;
+        buildSystem = FindObjectOfType<BuildSystem>();
+        availableNumOfDarkTiles = buildSystem.availablePlatformsNum;
     }
 
     void Update()
     {
-        availableNumOfDarkTiles = setDarkTile.availablePlatformsNum;
+        availableNumOfDarkTiles = buildSystem.availablePlatformsNum;
         DarkTilesText.text = "x " + availableNumOfDarkTiles.ToString();
     }
 }

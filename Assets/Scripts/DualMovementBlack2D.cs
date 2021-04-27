@@ -11,18 +11,21 @@ public class DualMovementBlack2D : MonoBehaviour
     Vector2 movement;
     bool jump = false;
     GameManager gameManager;
-
-    private int numOfPlatformsAvailable;
-    public Rigidbody2D blackRb;
-    public Transform darkPlatform;
+    Rigidbody2D rb;
 
     void Start()
     {
-        numOfPlatformsAvailable = 3;
         gameManager = FindObjectOfType<GameManager>();
+        rb = GetComponent<Rigidbody2D>();
     }
     void Update()
     {
+        if (gameManager.haltBlack)
+        {
+            rb.velocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+        }
+
         if (!gameManager.whiteActive && !frozen)
         {
             movement.x = Input.GetAxisRaw("Horizontal");

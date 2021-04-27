@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2190429541750524720}
   - component: {fileID: 2190429541750524723}
   - component: {fileID: 2190429541750524721}
-  - component: {fileID: 1876093266882804212}
+  - component: {fileID: 753534729393741755}
   m_Layer: 17
   m_Name: Lantern Holder
   m_TagString: Lantern Holder
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 2190429541750524725}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.54, y: -6.43, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -72,8 +72,8 @@ SpriteRenderer:
   m_SortingLayerID: 931351955
   m_SortingLayer: 1
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 3a44f3eb01aaa77429573f65c138a461, type: 3}
-  m_Color: {r: 0.5377358, g: 0.39172852, b: 0.31706122, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 1b8473c467ef7854183f231ebc46c825, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -96,8 +96,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   occupied: 0
---- !u!61 &1876093266882804212
-BoxCollider2D:
+  activeColor: {r: 0.30588236, g: 0.972549, b: 0.57254905, a: 255}
+--- !u!58 &753534729393741755
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -109,16 +110,6 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.008908227}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.53333336, y: 0.53333336}
-    newSize: {x: 0.53333336, y: 0.53333336}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.2733508, y: 0.37218353}
-  m_EdgeRadius: 0
+  m_Radius: 0.25

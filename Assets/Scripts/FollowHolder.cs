@@ -7,17 +7,20 @@ public class FollowHolder : MonoBehaviour
 {
     public bool pickedUp;
     public Transform holderTransform;
+    public Color activeColor = new Color(78, 248, 146, 255);
 
-    [SerializeField] Rigidbody2D rb;
     [SerializeField] float force = 1.5f;
 
     Vector2 dir;
     Vector2 normalDir;
-    
+    SpriteRenderer sr;
+    Rigidbody2D rb;
+
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -32,8 +35,28 @@ public class FollowHolder : MonoBehaviour
             float magnitude = dir.magnitude;
             Vector2 adaptiveDir = 2f * math.atan(0.3f * magnitude) / math.PI * normalDir;
             rb.AddForce(adaptiveDir);
-            **/
-            
+            **/  
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("White Hand"))
+        {
+            if (!pickedUp && !collision.gameObject.GetComponentInChildren<GrabSystem>().holdingLantern)
+            {
+                sr.color = activeColor;
+            }
+        }
+    }
+
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("White Hand"))
+        {
+            sr.color = Color.white;
+        }
+    }
+
 }

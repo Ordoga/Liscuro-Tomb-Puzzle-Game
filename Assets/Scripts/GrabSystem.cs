@@ -6,9 +6,12 @@ using UnityEngine;
 public class GrabSystem : MonoBehaviour
 {
 
+    public bool holdingLantern;
+
     [SerializeField] Rigidbody2D grabDetect;
     [SerializeField] LayerMask lanternsLayer, holdersLayer;
-    [SerializeField] bool holdingLantern;
+    [SerializeField] Sprite redHand;
+    [SerializeField] Sprite RegularHand;
 
 
     float detectRadius;
@@ -21,11 +24,11 @@ public class GrabSystem : MonoBehaviour
     {
         holderNearby = false;
         holdingLantern = false;
-        detectRadius = GetComponent<CircleCollider2D>().radius;
+        detectRadius = GetComponent<CircleCollider2D>().radius + .05f;
         gameManager = FindObjectOfType<GameManager>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (gameManager.whiteActive && Input.GetKeyDown(KeyCode.Mouse0)) // Left mouse clicked
         {
@@ -35,13 +38,8 @@ public class GrabSystem : MonoBehaviour
             {
                 PickUpLantern();
             }
-        }
-        else
-        {
-            if (gameManager.whiteActive && Input.GetKeyDown(KeyCode.Mouse1)) // Right mouse clicked
+            else
             {
-                FindLanternsAndHangers();
-
                 if (hangerCollision != null && holdingLantern) // If found a holder and holding lantern
                 {
                     closestHolder = hangerCollision.gameObject;
@@ -50,7 +48,6 @@ public class GrabSystem : MonoBehaviour
                         PlaceLantern();
                     }
                 }
-
             }
         }
     }   
