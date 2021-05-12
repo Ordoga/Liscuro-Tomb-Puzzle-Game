@@ -716,7 +716,7 @@ GameObject:
   - component: {fileID: 7313009617232445064}
   - component: {fileID: 7313009617232445068}
   m_Layer: 5
-  m_Name: UiCanvas
+  m_Name: UiCanvasRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -817,7 +817,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NextLevelUi: {fileID: 7313009618037801005}
   pauseMenuUi: {fileID: 7313009617758318503}
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 3654390878843086206, guid: 83dd2959ea34e9041b4ca0dacac5c7c6,
+    type: 3}
 --- !u!1 &7313009617459525728
 GameObject:
   m_ObjectHideFlags: 0
