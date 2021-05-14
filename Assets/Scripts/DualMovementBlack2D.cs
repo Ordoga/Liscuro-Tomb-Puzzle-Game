@@ -47,4 +47,5 @@ public class DualMovementBlack2D : MonoBehaviour
         }
     }
 
+
 }

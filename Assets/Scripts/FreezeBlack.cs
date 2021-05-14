@@ -5,23 +5,44 @@ using UnityEngine;
 public class FreezeBlack : MonoBehaviour
 {
     [SerializeField] Sprite alarmed, relaxed;
+
+    //all the timer related variables
+    [SerializeField] float timeAllowInFreeze = 4.0f;
+    private float timerInFreeze;
+    private bool activateTimer;
+
     Rigidbody2D blackRb;
     Vector3 startingPos;
     private void Start()
     {
+        activateTimer = false;
         blackRb = GetComponentInParent<Rigidbody2D>();
         startingPos = blackRb.position;
-        
+        timerInFreeze = timeAllowInFreeze;
+
     }
+
     private void Update()
     {
-        
+        //if dark rect is freezed - timer activates
+        if (activateTimer)
+        {
+            timerInFreeze -= Time.deltaTime;
+            if (timerInFreeze <= 0)
+            {
+                MoveToStartingPos();
+            }
+        }
     }
+
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Light"))
         {
+            activateTimer = true;
+
             Debug.Log("Light collision");
             blackRb.gameObject.GetComponent<DualMovementBlack2D>().frozen = true;
             blackRb.isKinematic = true;
@@ -34,18 +55,23 @@ public class FreezeBlack : MonoBehaviour
         Debug.Log("Uncollide");
         if (collision.gameObject.layer == LayerMask.NameToLayer("Light"))
         {
+            activateTimer = false;
+            timerInFreeze = timeAllowInFreeze;
+
             Debug.Log("Uncollide Light");
             blackRb.gameObject.GetComponent<DualMovementBlack2D>().frozen = false;
             blackRb.isKinematic = false;
             blackRb.gameObject.GetComponent<SpriteRenderer>().sprite = relaxed;
         }
+        //If the black rect leaves the map boundaries, teleport back to starting position
         if (collision.gameObject.CompareTag("Confiner"))
         {
+            Debug.Log("Left Map");
             MoveToStartingPos();
-        }
+        }          
     }
 
-
+    //move black rect to the starting position
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Tilemap"))
