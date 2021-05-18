@@ -16,7 +16,7 @@ MonoBehaviour:
     list:
     - name: Main
       sortingLayer:
-        name: Player
+        name: Default
         Order: 0
       darknessColor: {r: 1, g: 1, b: 1, a: 0}
       lightingResolution: 1
@@ -56,7 +56,7 @@ MonoBehaviour:
   qualitySettings:
     HDR: 1
     lightTextureSize: 1
-    lightEffectTextureSize: 2
+    lightEffectTextureSize: 1
     lightFilterMode: 1
     updateMethod: 0
     coreAxis: 0

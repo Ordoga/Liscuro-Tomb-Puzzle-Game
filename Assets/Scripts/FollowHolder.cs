@@ -28,14 +28,6 @@ public class FollowHolder : MonoBehaviour
         if (pickedUp)
         {
             transform.position = holderTransform.position; // Follows holder
-            /**
-            dir = holderTransform.position - rb.transform.position ;
-            normalDir = dir;
-            normalDir.Normalize();
-            float magnitude = dir.magnitude;
-            Vector2 adaptiveDir = 2f * math.atan(0.3f * magnitude) / math.PI * normalDir;
-            rb.AddForce(adaptiveDir);
-            **/  
         }
     }
 

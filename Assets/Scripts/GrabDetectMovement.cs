@@ -10,7 +10,7 @@ public class GrabDetectMovement : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
     [SerializeField] Camera cam;
     
-    float maxDistFromHolder = 1.4f;
+    float maxDistFromHolder = 1.8f;
     Vector2 mousePos;
 
     private void Start()
@@ -29,7 +29,7 @@ public class GrabDetectMovement : MonoBehaviour
         Vector2 lookDir = normalLookDir;
         float magnitude = lookDir.magnitude;
         lookDir.Normalize();
-        Vector2 adaptiveLookDir = 2f * math.atan(0.3f * magnitude) / math.PI * lookDir;
+        Vector2 adaptiveLookDir = 2f * math.atan(0.4f * magnitude) / math.PI * lookDir;
         rb.position = holderRb.position + maxDistFromHolder * adaptiveLookDir;
     }
 

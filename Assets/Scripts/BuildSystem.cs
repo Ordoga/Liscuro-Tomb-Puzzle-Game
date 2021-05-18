@@ -12,18 +12,14 @@ public class BuildSystem : MonoBehaviour
     [SerializeField] Tile tile;
     [SerializeField] Sprite redHand;
     [SerializeField] Sprite RegularHand;
-    //[SerializeField] Grid grid;
 
     public int availablePlatformsNum;
 
     
 
-    Vector3Int HandLocation;
-    //Vector3Int whiteRectPos;
-    //TileBase getWhiteRectTile;
+    Vector3Int handLocation;
     TileBase getPlaceTile;
     TileBase getDarkTile;
-    TileBase getMapTile;
 
     //two tileBases under placeTile tileMap
     [SerializeField] TileBase GreenTile;
@@ -31,20 +27,12 @@ public class BuildSystem : MonoBehaviour
 
     GameManager gameManager;
     SpriteRenderer darkSpriteRenderer;
-
-    Color activateColor = new Color(0.0f, 255.0f, 0.0f, 255.0f*0.8f);
-    Color deactivateColor = new Color(0.0f, 255.0f, 0.0f, 0.0f);
-
     Vector3Int currGreenPos;
-
-    bool menuDisplay;
 
     void Start()
     {
-        availablePlatformsNum = 3;
-        menuDisplay = false;
-
-        currGreenPos = HandLocation;
+        availablePlatformsNum = 1;
+        currGreenPos = handLocation;
         gameManager = FindObjectOfType<GameManager>();
         darkSpriteRenderer = GetComponentInParent<SpriteRenderer>();
     }
@@ -54,73 +42,72 @@ public class BuildSystem : MonoBehaviour
         
         if (!gameManager.whiteActive) 
         {
-           // Vector3Int WhiteRect = grid.WorldToCell(GameObject.Find("White Rect").transform.position);
+            //Collect info on hand location and any Daek or Placement tiles in the spot
+            handLocation = tiles.WorldToCell(handPos.position);
+            getPlaceTile = placeTiles.GetTile(handLocation);
+            getDarkTile = darkTiles.GetTile(handLocation);
 
-            HandLocation = tiles.WorldToCell(handPos.position);
             
-            // getWhiteRectTile = tiles.GetTile(whiteRectLocation);
-
-            getPlaceTile = placeTiles.GetTile(HandLocation);
-            getDarkTile = darkTiles.GetTile(HandLocation);
-            getMapTile = tiles.GetTile(HandLocation);
-
-            darkSpriteRenderer.sprite = RegularHand;
-
-            //if(getDarkTile || getMapTile) // Changes dark rect hand color to red if any tile is detected 
-
-            if(!getPlaceTile) //Changes dark rect hand color to red if hand is not ReadOnlyCollectionBase place tile
+            if (!getPlaceTile) //If no Placement tile is build, building is disabled
             {
                 darkSpriteRenderer.sprite = redHand;
-                placeTiles.SetTile(currGreenPos, invisibleTile);
-                currGreenPos = HandLocation;
-            }
-            if (Input.GetMouseButtonDown(1))
-            {
-                menuDisplay = !menuDisplay;
-            }
 
-            if (menuDisplay) //if menu is on
-            {
-                if (availablePlatformsNum > 0 && getPlaceTile ) //if theres are enought tiles and can place
+                if (Input.GetMouseButtonDown(0) && availablePlatformsNum > 0)
                 {
-                    placeTiles.SetTile(HandLocation, GreenTile);
-
-                    if (placeTiles.GetTile(currGreenPos) != getPlaceTile) //if hand position is no longer on the last green tile cell-change the green pos
-                    {
-
-                        placeTiles.SetTile(HandLocation, GreenTile);
-                        placeTiles.SetTile(currGreenPos, invisibleTile);
-                        currGreenPos = HandLocation;
-                    }
-
-                    if (Input.GetMouseButtonDown(0) && placeTiles.GetTile(currGreenPos) == getPlaceTile)//if deciding to place a dark tile and hand pos is on green tile
-                    {
-                        PlaceTile(HandLocation);
-                        menuDisplay = false;
-
-                        
-
-                    }                  
-                    
+                    currGreenPos = handLocation;
+                }
+                if (Input.GetMouseButton(0) && availablePlatformsNum > 0 && placeTiles.GetTile(currGreenPos) != placeTiles.GetTile(handLocation)) //if theres are enought tiles and can place
+                {
+                    SetInvisiTile(currGreenPos);
+                    currGreenPos = handLocation;
+                }
+            }
+            else // Building is enabled
+            {
+                if (getDarkTile)
+                {
+                    darkSpriteRenderer.sprite = redHand;
+                }
+                else
+                {
+                    darkSpriteRenderer.sprite = RegularHand;
                 }
 
-            }
-            else if (!menuDisplay)//if not on menu- remove the last green tile shown
-            {
-                placeTiles.SetTile(currGreenPos, invisibleTile);
-                currGreenPos.Set(100, 100, 100);
-            }
-            
-            
-            if(getDarkTile && Input.GetMouseButtonDown(0))      //if tile location occupied by dark tile
-            {
-                RemoveTile(HandLocation);
-                menuDisplay = false;
+                //Only if player presses mouse key the build event begins. It is divided into 3 steps: click down, hold and release
+                if (Input.GetMouseButtonDown(0) && availablePlatformsNum > 0) //Click down - initialize green placement tile
+                {
+                    SetGreenTile(handLocation);
+                    currGreenPos = handLocation;
+                }
+                if (Input.GetMouseButton(0) && availablePlatformsNum > 0 && placeTiles.GetTile(currGreenPos) != placeTiles.GetTile(handLocation)) //Hold - Only occurs if tiles are available, updates the green placement tile
+                {
+                    SetGreenTile(handLocation);
+                    SetInvisiTile(currGreenPos);
+                    currGreenPos = handLocation;
+                }
+
+                if (Input.GetMouseButtonUp(0))// Release - performs the action: remove or set dark tile
+                {
+                    SetInvisiTile(currGreenPos);
+                    currGreenPos = handLocation;
+                    if (!getDarkTile)
+                    {
+                        if (availablePlatformsNum > 0)
+                        {
+                            PlaceDarkTile(handLocation);
+                        }
+                    }
+                    else
+                    {
+                        RemoveDarkTile(handLocation);
+                    }
+
+                }
             }
         }
     }
 
-    private void PlaceTile(Vector3Int location)
+    private void PlaceDarkTile(Vector3Int location)
     {
    
         darkTiles.SetTile(location, tile);
@@ -128,20 +115,21 @@ public class BuildSystem : MonoBehaviour
 
     }
 
-    private void RemoveTile(Vector3Int location)
+    private void RemoveDarkTile(Vector3Int location)
     {
 
         darkTiles.SetTile(location, null);
         availablePlatformsNum ++;
     }
 
-
-    /*private void SetTileColourGreen(Vector3Int position)
+    private void SetGreenTile(Vector3Int position)
     {
-
         placeTiles.SetTile(position, GreenTile);
-        getTile = tilemap.GetTile(position);
-        return getTile;
-    }*/
+    }
+
+    private void SetInvisiTile(Vector3Int position)
+    {
+        placeTiles.SetTile(position, invisibleTile);
+    }
 
 }
