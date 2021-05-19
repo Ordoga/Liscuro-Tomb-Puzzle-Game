@@ -13,13 +13,17 @@ public class FreezeBlack : MonoBehaviour
 
     Rigidbody2D blackRb;
     Vector3 startingPos;
+
+    float fade = 1f;
+    public GameObject darkSprite;
+
     private void Start()
     {
         activateTimer = false;
         blackRb = GetComponentInParent<Rigidbody2D>();
         startingPos = blackRb.position;
         timerInFreeze = timeAllowInFreeze;
-
+        darkSprite.GetComponent<SpriteRenderer>().material.SetFloat("_fade", 1);
     }
 
     private void Update()
@@ -27,11 +31,14 @@ public class FreezeBlack : MonoBehaviour
         //if dark rect is freezed - timer activates
         if (activateTimer)
         {
-            timerInFreeze -= Time.deltaTime;
-            if (timerInFreeze <= 0)
+            fade -= (Time.deltaTime/5);
+
+            if (fade <= 0)
             {
                 MoveToStartingPos();
             }
+
+            darkSprite.GetComponent<SpriteRenderer>().material.SetFloat("_fade", fade);
         }
     }
 
@@ -56,6 +63,8 @@ public class FreezeBlack : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Light"))
         {
             activateTimer = false;
+            fade = 1f;
+            darkSprite.GetComponent<SpriteRenderer>().material.SetFloat("_fade", fade);
             timerInFreeze = timeAllowInFreeze;
 
             Debug.Log("Uncollide Light");
@@ -84,6 +93,7 @@ public class FreezeBlack : MonoBehaviour
     {
         Debug.Log("MoveToStart");
         blackRb.position = startingPos;
+        fade = 1;
     }
 
 }
