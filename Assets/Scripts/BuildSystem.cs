@@ -15,7 +15,6 @@ public class BuildSystem : MonoBehaviour
 
     public int availablePlatformsNum;
 
-
     Vector3Int handLocation;
     TileBase getPlaceTile;
     TileBase getDarkTile;
@@ -30,7 +29,6 @@ public class BuildSystem : MonoBehaviour
 
     void Start()
     {
-        availablePlatformsNum = 1;
         currGreenPos = handLocation;
         gameManager = FindObjectOfType<GameManager>();
         darkSpriteRenderer = GetComponentInParent<SpriteRenderer>();
@@ -111,9 +109,6 @@ public class BuildSystem : MonoBehaviour
    
         darkTiles.SetTile(location, tile);
         availablePlatformsNum --;
-        gameManager.darkTilesPlaceCounter++;
-        Debug.Log("gameManager.darkTilesPlaceCounter");
-        Debug.Log(gameManager.darkTilesPlaceCounter);
 
     }
 

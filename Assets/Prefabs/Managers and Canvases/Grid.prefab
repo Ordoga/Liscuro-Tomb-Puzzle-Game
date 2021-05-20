@@ -647,7 +647,7 @@ MonoBehaviour:
     depth: 1
     spriteRenderer: {fileID: 0}
   rectangle:
-    shadowType: 1
+    shadowType: 2
     maskType: 2
     gameObject: {fileID: 8695398666708581473}
     transform: {fileID: 8695398666708581478}
