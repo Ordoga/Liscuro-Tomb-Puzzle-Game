@@ -15,7 +15,6 @@ public class BuildSystem : MonoBehaviour
 
     public int availablePlatformsNum;
 
-    
 
     Vector3Int handLocation;
     TileBase getPlaceTile;
@@ -112,6 +111,9 @@ public class BuildSystem : MonoBehaviour
    
         darkTiles.SetTile(location, tile);
         availablePlatformsNum --;
+        gameManager.darkTilesPlaceCounter++;
+        Debug.Log("gameManager.darkTilesPlaceCounter");
+        Debug.Log(gameManager.darkTilesPlaceCounter);
 
     }
 
