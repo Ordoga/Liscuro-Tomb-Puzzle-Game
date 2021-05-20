@@ -19,6 +19,7 @@ public class FreezeBlack : MonoBehaviour
 
     private void Start()
     {
+        darkSprite = FindObjectOfType<DualMovementBlack2D>().gameObject;
         activateTimer = false;
         blackRb = GetComponentInParent<Rigidbody2D>();
         startingPos = blackRb.position;
@@ -37,8 +38,10 @@ public class FreezeBlack : MonoBehaviour
             {
                 MoveToStartingPos();
             }
-
-            darkSprite.GetComponent<SpriteRenderer>().material.SetFloat("_fade", fade);
+            else
+            {
+                darkSprite.GetComponent<SpriteRenderer>().material.SetFloat("_fade", fade);
+            }
         }
     }
 

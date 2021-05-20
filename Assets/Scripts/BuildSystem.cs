@@ -15,8 +15,6 @@ public class BuildSystem : MonoBehaviour
 
     public int availablePlatformsNum;
 
-    
-
     Vector3Int handLocation;
     TileBase getPlaceTile;
     TileBase getDarkTile;
@@ -31,7 +29,6 @@ public class BuildSystem : MonoBehaviour
 
     void Start()
     {
-        availablePlatformsNum = 1;
         currGreenPos = handLocation;
         gameManager = FindObjectOfType<GameManager>();
         darkSpriteRenderer = GetComponentInParent<SpriteRenderer>();
