@@ -5,17 +5,19 @@ using UnityEngine;
 public class SwapEnabler : MonoBehaviour
 {
     private bool canSwitch;
+    GameManager gm;
 
     void Start()
     {
         canSwitch = false;
-        FindObjectOfType<GameManager>().swapEnabled = false;
+        gm = FindObjectOfType<GameManager>();
+        gm.swapEnabled = false;
     }
     void Update()
     {
         if (!canSwitch)
         {
-            FindObjectOfType<GameManager>().swapEnabled = false;
+            gm.swapEnabled = false;
         }
     }
 
@@ -24,7 +26,7 @@ public class SwapEnabler : MonoBehaviour
         if (other.gameObject.tag == "DarkRect" || other.gameObject.tag == "LightRect")
         {
             Debug.Log("dark collisioned");
-            FindObjectOfType<GameManager>().swapEnabled = true;
+            gm.swapEnabled = true;
             canSwitch = true;
 
         }

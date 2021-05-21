@@ -54,14 +54,12 @@ public class GameManager : MonoBehaviour
             haltWhite = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space)) 
+        if (Input.GetKeyDown(KeyCode.Space) && swapEnabled) // if i can move between characters
         {
-
-            if (swapEnabled) // if i can move between characters
-            {
 
                 if (whiteActive) //make black active
                 {
+                Debug.Log("Ping");
                     whiteActive = false;
                     haltWhite = true;
                 }
@@ -70,10 +68,8 @@ public class GameManager : MonoBehaviour
                     whiteActive = true;
                     haltBlack = true;
                 }
-            }
+                rectSwitchCounter++;
 
-            rectSwitchCounter++;
-            Debug.Log(rectSwitchCounter);
         }
 
         if (lightPortalReady && darkPortalReady)
