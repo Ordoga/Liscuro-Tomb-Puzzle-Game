@@ -9,6 +9,7 @@ public class FollowHolder : MonoBehaviour
     public Transform holderTransform;
     public Color activeColor = new Color(78, 248, 146, 255);
 
+
     [SerializeField] float force = 1.5f;
 
     Vector2 dir;
@@ -25,9 +26,12 @@ public class FollowHolder : MonoBehaviour
 
     void Update()
     {
+        sr.sortingOrder = holderTransform.GetComponent<SpriteRenderer>().sortingOrder; // equals the sorting order of the light's hand
+
         if (pickedUp)
         {
             transform.position = holderTransform.position; // Follows holder
+            
         }
     }
 

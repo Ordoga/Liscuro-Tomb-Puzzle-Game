@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public bool haltWhite = false;
     public bool haltBlack = false;
 
+    [SerializeField] bool whiteStarts;
+
 
     public bool swapEnabled;
 
@@ -33,10 +35,10 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         swapEnabled = true;
+        whiteActive = whiteStarts;
 
         rectSwitchCounter = 0;
         darkTilesPlaceCounter = 0;
-        whiteActive = false;
         Cursor.visible = false;
     }
     private void Update()
