@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public bool haltBlack = false;
 
 
-    private bool swapEnabled;
+    public bool swapEnabled;
 
 
 
@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        swapEnabled = true;
+
         rectSwitchCounter = 0;
         darkTilesPlaceCounter = 0;
         whiteActive = false;
@@ -50,30 +52,24 @@ public class GameManager : MonoBehaviour
             haltWhite = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)) 
         {
 
-            if (whiteActive) //make black active
+            if (swapEnabled) // if i can move between characters
             {
-                whiteActive = false;
-                haltWhite = true;
-            }
-            else   //make white active
-            {
-                if (FindObjectOfType<SwapEnabler>()) { //if this level contains the swapenabler swap only if swapenabled is true
-                    swapEnabled = FindObjectOfType<SwapEnabler>().enableSwap;
-                    if (swapEnabled == true)
-                    {
-                        whiteActive = true;
-                        haltBlack = true;
-                    }
+
+                if (whiteActive) //make black active
+                {
+                    whiteActive = false;
+                    haltWhite = true;
                 }
-                else//change to light
+                else   //if dark active
                 {
                     whiteActive = true;
                     haltBlack = true;
                 }
             }
+
             rectSwitchCounter++;
             Debug.Log(rectSwitchCounter);
         }

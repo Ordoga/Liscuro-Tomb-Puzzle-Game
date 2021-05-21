@@ -4,26 +4,28 @@ using UnityEngine;
 
 public class SwapEnabler : MonoBehaviour
 {
-    public bool enableSwap;
+    private bool canSwitch;
 
-    // Start is called before the first frame update
     void Start()
     {
-        enableSwap = false;
+        canSwitch = false;
+        FindObjectOfType<GameManager>().swapEnabled = false;
     }
-
-    // Update is called once per frame
     void Update()
     {
-        
+        if (!canSwitch)
+        {
+            FindObjectOfType<GameManager>().swapEnabled = false;
+        }
     }
-    void OnTriggerEnter2D(Collider2D other)
+
+    void OnTriggerEnter2D(Collider2D other)// if detected dark rect collision, enable transition to light
     {
-        if (other.gameObject.tag == "DarkRect")
+        if (other.gameObject.tag == "DarkRect" || other.gameObject.tag == "LightRect")
         {
             Debug.Log("dark collisioned");
-            enableSwap = true;
-
+            FindObjectOfType<GameManager>().swapEnabled = true;
+            canSwitch = true;
 
         }
     }
