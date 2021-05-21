@@ -15,8 +15,8 @@ public class LevelSelect : MonoBehaviour
 
     //the data of each level about how many switches/dt placements achieved by the best run -> index i == level i , starting from 1
     //CHANGE THE LENGTH ACCORDING TO NUMBER OF LEVELS+1
-    public int[] levelSwitches = new int[4];
-    public int[] levelDtPlacements = new int[4];
+    private int[] levelSwitches = new int[8];
+    private int[] levelDtPlacements = new int[8];
 
     /* Two dimensional array contains all the desired requirements for each stage 
     First index is the number of levels+1 and the second is 3 according to This level requirements - 
@@ -24,11 +24,15 @@ public class LevelSelect : MonoBehaviour
     Second for the less desired number of switches between charachters
     Third for the desired number of switches between charachters */
 
-    int[,] levelRequirements = new int[4, 2] {
+    int[,] levelRequirements = new int[8, 2] {
         /*dummyCell*/{0,0},
-        {6,4},
+        {3,1},
         {4,2},
-        {1,1}
+        {3,2},
+        {4,2},
+        {3,1},
+        {4,2},
+        {7,4},
     };
 
   
@@ -37,7 +41,6 @@ public class LevelSelect : MonoBehaviour
     //updates all the open levels every time we visit levels menu
     void Start()
     {
-       
 
         int levelReached = PlayerPrefs.GetInt("levelReached", 1);
 
@@ -81,22 +84,6 @@ public class LevelSelect : MonoBehaviour
         }
 
 
-    }
-
-
-    //the functions for the a button onclick method
-    public void Level1()
-    {
-        SceneManager.LoadScene(1);
-    }
-
-    public void Level2()
-    {
-        SceneManager.LoadScene(2);
-    }
-    public void Level3()
-    {
-        SceneManager.LoadScene(3);
     }
 
 

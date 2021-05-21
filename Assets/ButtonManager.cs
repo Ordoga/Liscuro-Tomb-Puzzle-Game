@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 
@@ -63,5 +64,10 @@ public class ButtonManager : MonoBehaviour
 
         imgToSwitch.sprite = imageList[imageNum];
     }
+    public void nextLevel()
+    {
+        SceneManager.LoadScene(buttonNum);
+    }
+
 }
 
