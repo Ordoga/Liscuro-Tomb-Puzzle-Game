@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public bool haltWhite = false;
     public bool haltBlack = false;
 
-    [SerializeField] bool whiteStarts;
+    public bool whiteStarts;
 
 
     public bool swapEnabled;
@@ -59,7 +59,6 @@ public class GameManager : MonoBehaviour
 
                 if (whiteActive) //make black active
                 {
-                Debug.Log("Ping");
                     whiteActive = false;
                     haltWhite = true;
                 }

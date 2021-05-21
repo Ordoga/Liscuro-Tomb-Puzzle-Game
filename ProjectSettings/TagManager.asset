@@ -62,3 +62,6 @@ TagManager:
   - name: Tilemap
     uniqueID: 79307991
     locked: 0
+  - name: Black Player
+    uniqueID: 1309093651
+    locked: 0

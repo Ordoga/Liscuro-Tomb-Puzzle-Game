@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class FreezeBlack : MonoBehaviour
 {
+    [SerializeField] GameObject burnParticles;
     [SerializeField] Sprite alarmed, relaxed;
 
     //all the timer related variables
     [SerializeField] float timeAllowInFreeze = 4.0f;
+    private GameObject currBurn;
     private float timerInFreeze;
     private bool activateTimer;
 
@@ -55,6 +57,7 @@ public class FreezeBlack : MonoBehaviour
 
             Debug.Log("Light collision");
             blackRb.gameObject.GetComponent<DualMovementBlack2D>().frozen = true;
+            currBurn = Instantiate(burnParticles, blackRb.transform.position, Quaternion.identity);
             blackRb.isKinematic = true;
             blackRb.gameObject.GetComponent<SpriteRenderer>().sprite = alarmed;
         }
@@ -72,6 +75,7 @@ public class FreezeBlack : MonoBehaviour
 
             Debug.Log("Uncollide Light");
             blackRb.gameObject.GetComponent<DualMovementBlack2D>().frozen = false;
+            Destroy(currBurn);
             blackRb.isKinematic = false;
             blackRb.gameObject.GetComponent<SpriteRenderer>().sprite = relaxed;
         }

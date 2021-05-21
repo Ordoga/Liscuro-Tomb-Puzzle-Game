@@ -5,6 +5,8 @@ using Cinemachine;
 
 public class VirtualCameraSwitcher : MonoBehaviour
 {
+    [SerializeField] float darkDelay = 0.8f;
+    [SerializeField] float lightDelay = 1.6f;
     [SerializeField] GameManager gameManager;
     public CinemachineVirtualCamera[] VirCarmeras;
     public float maxDistance;
@@ -16,7 +18,7 @@ public class VirtualCameraSwitcher : MonoBehaviour
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
-        VirCarmeras[3].GetComponent<CinemachineVirtualCamera>().Priority = 5;
+        StartCoroutine(ExampleCoroutine());
     }
 
     // Update is called once per frame
@@ -48,5 +50,24 @@ public class VirtualCameraSwitcher : MonoBehaviour
             VirCarmeras[2].GetComponent<CinemachineVirtualCamera>().Priority = 10;
         }
     }
+    private IEnumerator ExampleCoroutine()
+    {
+        yield return new WaitForSeconds(darkDelay);
+        VirCarmeras[3].GetComponent<CinemachineVirtualCamera>().Priority = 5;
+        yield return new WaitForSeconds(lightDelay);
+        VirCarmeras[4].GetComponent<CinemachineVirtualCamera>().Priority = 5;
+
+        if (gameManager.whiteActive)
+        {
+            VirCarmeras[1].GetComponent<CinemachineVirtualCamera>().Priority = 11;
+            VirCarmeras[2].GetComponent<CinemachineVirtualCamera>().Priority = 10;
+        }
+        else
+        {
+            VirCarmeras[2].GetComponent<CinemachineVirtualCamera>().Priority = 11;
+            VirCarmeras[1].GetComponent<CinemachineVirtualCamera>().Priority = 10;
+        }
     }
+
+}
 
