@@ -20,8 +20,12 @@ public class GrabSystem : MonoBehaviour
     Collider2D collision, hangerCollision;
     GameManager gameManager;
 
+    private SpriteRenderer spriteRd;
+
     void Start()
     {
+        spriteRd = GetComponent<SpriteRenderer>();
+        spriteRd.sortingOrder = 5;
         holderNearby = false;
         holdingLantern = false;
         detectRadius = GetComponent<CircleCollider2D>().radius + .05f;
@@ -30,6 +34,17 @@ public class GrabSystem : MonoBehaviour
 
     private void Update()
     {
+
+        if (holdingLantern)
+        {
+            spriteRd.sortingOrder = 11; //if holding lantern show the hand infront of light character
+        }
+        else
+        {
+            spriteRd.sortingOrder = 5; //if not holding lantern show the hand in the back of light character
+
+        }
+
         if (gameManager.whiteActive && Input.GetKeyDown(KeyCode.Mouse0)) // Left mouse clicked
         {
             FindLanternsAndHangers();
