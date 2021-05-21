@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
+
 public class LightTextUp : MonoBehaviour
 {
     public Transform player;
@@ -14,6 +15,7 @@ public class LightTextUp : MonoBehaviour
     float distance = 0f;
     float fresnel = 10f;
     float fresnelSign = -1f;
+    Color color = new Color(1f, 1f, 1f, 0f);
 
     void Start()
     {
@@ -42,6 +44,7 @@ public class LightTextUp : MonoBehaviour
             }
 
             material.SetFloat("_fade", fade);
+            material.SetColor("_Color", Color.white);
         }
 
     }

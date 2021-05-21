@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Game Manager Profile
   m_EditorClassIdentifier: 
   components:
-  - {fileID: 976182957540236696}
---- !u!114 &976182957540236696
+  - {fileID: 3401610337935941304}
+--- !u!114 &3401610337935941304
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -30,11 +30,11 @@ MonoBehaviour:
   m_AdvancedMode: 0
   threshold:
     m_OverrideState: 0
-    m_Value: 1
+    m_Value: 0.9
     min: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 1.94
     min: 0
   scatter:
     m_OverrideState: 0

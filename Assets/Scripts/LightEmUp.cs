@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class LightEmUp : MonoBehaviour
 {
-    public Transform player;
+    [SerializeField] float distance = 1f;
+    [SerializeField] float fadeIn = 1f;
+    [SerializeField] float fadeOut = 1f;
+    public Transform lightPlayer;
+    public Transform darkPlayer;
+    public Transform activationPoint;
     Material material;
     float fade = 0f;
     bool isAppearing = false;
+    bool isDisappearing = false;
     bool appeared = false;
-    float distance = 0f;
-    float fresnel = 10f;
-    float fresnelSign = -1f;
+    float distanceLight = 0f;
+    float distanceDark = 0f;
 
     private void Start()
     {
@@ -20,18 +25,24 @@ public class LightEmUp : MonoBehaviour
 
     void Update()
     {
-        distance = Vector2.Distance(player.position, transform.position);
+        distanceLight = Vector2.Distance(lightPlayer.position, activationPoint.position);
+        distanceDark = Vector2.Distance(darkPlayer.position, activationPoint.position);
 
-        if (distance <= 1 && !appeared)
+        if (((distanceLight <= distance) || (distanceDark <= distance)) && !appeared)
         {
             isAppearing = true;
             appeared = true;
         }
+        
+        if (((distanceLight > distance) || (distanceDark > distance)) && appeared)
+        {
+            isDisappearing = true;
+            appeared = false;
+        }
 
         if (isAppearing)
         {
-
-            fade += (Time.deltaTime) / 3;
+            fade += (Time.deltaTime) / fadeIn;
 
             if (fade >= 1)
             {
@@ -41,7 +52,38 @@ public class LightEmUp : MonoBehaviour
 
             material.SetFloat("_fade", fade);
         }
-        
+        else if(isDisappearing)
+        {
+            fade -= (Time.deltaTime) / fadeOut;
+
+            if (fade <= 0)
+            {
+                fade = 0f;
+                isDisappearing = false;
+            }
+
+            material.SetFloat("_fade", fade);
+        }
+        /**
+        if (((distanceLight >= 1) || (distanceDark >= 1)) && appeared)
+        {
+            isDisappearing = true;
+            appeared = false;
+        }
+
+        if (isDisappearing)
+        {
+            fade -= (Time.deltaTime) / 2;
+
+            if (fade <= 0)
+            {
+                fade = 1f;
+                isDisappearing = false;
+            }
+
+            material.SetFloat("_fade", fade);
+        }
+        **/
     }
     
 }
