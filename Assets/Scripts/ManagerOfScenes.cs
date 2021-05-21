@@ -14,6 +14,7 @@ public class ManagerOfScenes : MonoBehaviour
     private void Start()
     {
         Resume();
+        
     }
     void Update()
     {
@@ -48,6 +49,7 @@ public class ManagerOfScenes : MonoBehaviour
         pauseMenuUi.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+        Cursor.visible = true;
     }
 
     public void PassPause()
@@ -55,6 +57,8 @@ public class ManagerOfScenes : MonoBehaviour
         NextLevelUi.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+        Cursor.visible = true;
+
     }
 
     public void Restart()
@@ -66,6 +70,7 @@ public class ManagerOfScenes : MonoBehaviour
     public void MainMenu()
     {
         SceneManager.LoadScene(0);
+        Cursor.visible = true;
         Resume();
     }
     public void NextLevel()
@@ -77,6 +82,7 @@ public class ManagerOfScenes : MonoBehaviour
     public void ChooseLevel()
     {
         SceneManager.LoadScene("Levels");
+        Cursor.visible = true;
         Resume();
     }
     public void LevelRestrictions()
