@@ -229,6 +229,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e62eb9132f624945ba46cc948e8ba53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  burnParticles: {fileID: 1948845129152935676, guid: a2d800e4700152041b151ea19e31ab98,
+    type: 3}
   alarmed: {fileID: 21300000, guid: c92249b6aa89e5b49998080aa9d438d6, type: 3}
   relaxed: {fileID: 21300000, guid: f059bb0283b694645a98ec36a12e2db6, type: 3}
   timeAllowInFreeze: 4
