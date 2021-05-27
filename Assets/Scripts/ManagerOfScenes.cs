@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class ManagerOfScenes : MonoBehaviour
 {
     public static bool GameIsPaused;
-    public GameObject NextLevelUi;
+    public GameObject nextLevelUi;
     public GameObject pauseMenuUi;
     public GameManager gameManager;
-
+    public GameObject restartButton, nextLevelButton;
 
     private void Start()
     {
@@ -38,10 +39,19 @@ public class ManagerOfScenes : MonoBehaviour
 
     public void Resume()
     {
-        NextLevelUi.SetActive(false);
+        nextLevelUi.SetActive(false);
         pauseMenuUi.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+    }
+    public void PassPause()
+    {
+        nextLevelUi.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+        Cursor.visible = true;
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(nextLevelButton);
     }
 
     public void Pause()
@@ -50,15 +60,8 @@ public class ManagerOfScenes : MonoBehaviour
         Time.timeScale = 0f;
         GameIsPaused = true;
         Cursor.visible = true;
-    }
-
-    public void PassPause()
-    {
-        NextLevelUi.SetActive(true);
-        Time.timeScale = 0f;
-        GameIsPaused = true;
-        Cursor.visible = true;
-
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(restartButton);
     }
 
     public void Restart()

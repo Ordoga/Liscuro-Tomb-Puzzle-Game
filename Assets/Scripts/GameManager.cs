@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public bool levelPassed = false;
     public bool haltWhite = false;
     public bool haltBlack = false;
+    public bool cursor = false;
 
     public bool whiteStarts;
 
@@ -39,7 +40,7 @@ public class GameManager : MonoBehaviour
 
         rectSwitchCounter = 0;
         darkTilesPlaceCounter = 0;
-        Cursor.visible = false;
+        Cursor.visible = cursor;
     }
     private void Update()
     {
