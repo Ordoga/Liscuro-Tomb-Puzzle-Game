@@ -18,6 +18,7 @@ public class FreezeBlack : MonoBehaviour
 
     float fade = 1f;
     public GameObject darkSprite;
+    public GameObject darkHand;
 
     private void Start()
     {
@@ -27,6 +28,7 @@ public class FreezeBlack : MonoBehaviour
         startingPos = blackRb.position;
         timerInFreeze = timeAllowInFreeze;
         darkSprite.GetComponent<SpriteRenderer>().material.SetFloat("_fade", 1);
+        darkHand.GetComponent<SpriteRenderer>().material.SetFloat("_fade", 1);
     }
 
     private void Update()
@@ -43,6 +45,7 @@ public class FreezeBlack : MonoBehaviour
             else
             {
                 darkSprite.GetComponent<SpriteRenderer>().material.SetFloat("_fade", fade);
+                darkHand.GetComponent<SpriteRenderer>().material.SetFloat("_fade", fade);
             }
         }
     }
@@ -71,6 +74,7 @@ public class FreezeBlack : MonoBehaviour
             activateTimer = false;
             fade = 1f;
             darkSprite.GetComponent<SpriteRenderer>().material.SetFloat("_fade", fade);
+            darkHand.GetComponent<SpriteRenderer>().material.SetFloat("_fade", fade);
             timerInFreeze = timeAllowInFreeze;
 
             Debug.Log("Uncollide Light");

@@ -133,6 +133,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 3654390878843086206, guid: 83dd2959ea34e9041b4ca0dacac5c7c6,
+        type: 3}
+      propertyPath: cursor
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3654390878843086207, guid: 83dd2959ea34e9041b4ca0dacac5c7c6,
         type: 3}
       propertyPath: m_RootOrder
@@ -338,7 +343,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 210}
+  m_AnchoredPosition: {x: 0, y: 200}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &269013489
