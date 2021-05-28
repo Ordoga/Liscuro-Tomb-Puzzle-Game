@@ -178,6 +178,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b3ba67105ee2e24495788082d89ab58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightPortal: {fileID: 1325985531015828152}
+  startFading: 0
 --- !u!95 &9082089043493356328
 Animator:
   serializedVersion: 3
@@ -342,6 +344,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c0e0a5f29c5994cb9d5380af57180c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  darkPortal: {fileID: 1325985531411203984}
+  startFading: 0
 --- !u!95 &5307029964339910828
 Animator:
   serializedVersion: 3

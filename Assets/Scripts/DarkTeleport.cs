@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class DarkTeleport : MonoBehaviour
 {
-
     GameManager gameManager;
+    public GameObject darkPortal;
+    public bool startFading = false;
+    float intensity = 1f;
+
 
     void Start()
     {
@@ -28,6 +31,21 @@ public class DarkTeleport : MonoBehaviour
         {
             gameManager.darkPortalReady = false;
         }
+    }
+
+    private void Update()
+    {
+        if (startFading)
+        {
+            GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.white * intensity);
+            intensity += Time.unscaledDeltaTime * 5f;
+        }
+
+    }
+
+    public void DarkFade()
+    {
+        startFading = true;
     }
 
 }

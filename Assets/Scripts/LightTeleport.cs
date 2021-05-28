@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class LightTeleport : MonoBehaviour
 {
-
-
     GameManager gameManager;
+    public GameObject lightPortal;
+    public bool startFading = false;
+    float intensity = 1f;
 
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
+        lightPortal = FindObjectOfType<GameObject>();
     }
 
 
@@ -22,7 +24,7 @@ public class LightTeleport : MonoBehaviour
             gameManager.lightPortalReady = true;
         }
     }
-
+    
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("LightRect"))
@@ -30,4 +32,20 @@ public class LightTeleport : MonoBehaviour
             gameManager.lightPortalReady = false;
         }
     }
+
+    private void Update()
+    {
+        if (startFading)
+        {
+            GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.white * intensity);
+            intensity += Time.unscaledDeltaTime * 3.1f;
+        }
+
+    }
+
+    public void LightFade()
+    {
+        startFading = true;
+    }
+
 }

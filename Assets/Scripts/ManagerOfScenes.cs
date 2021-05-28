@@ -11,6 +11,8 @@ public class ManagerOfScenes : MonoBehaviour
     public GameObject pauseMenuUi;
     public GameManager gameManager;
     public GameObject restartButton, nextLevelButton;
+    public GameObject lightPort;
+    public GameObject darkPort;
 
     private void Start()
     {
@@ -21,8 +23,7 @@ public class ManagerOfScenes : MonoBehaviour
     {
         if (gameManager.levelPassed)
         {
-            PassPause();
-
+            StartCoroutine(ExampleCoroutine());
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -46,20 +47,22 @@ public class ManagerOfScenes : MonoBehaviour
     }
     public void PassPause()
     {
-        nextLevelUi.SetActive(true);
+        lightPort.GetComponent<LightTeleport>().startFading = false;
+        darkPort.GetComponent<DarkTeleport>().startFading = false;
         Time.timeScale = 0f;
         GameIsPaused = true;
         Cursor.visible = true;
+        nextLevelUi.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(nextLevelButton);
     }
 
     public void Pause()
     {
-        pauseMenuUi.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
         Cursor.visible = true;
+        pauseMenuUi.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(restartButton);
     }
@@ -92,5 +95,15 @@ public class ManagerOfScenes : MonoBehaviour
     public void LevelRestrictions()
     {
 
+    }
+
+    private IEnumerator ExampleCoroutine()
+    {
+        yield return new WaitForSeconds(0.2f);
+        lightPort.GetComponent<LightTeleport>().LightFade();
+        darkPort.GetComponent<DarkTeleport>().DarkFade();
+        Time.timeScale = 0f;
+        yield return new WaitForSecondsRealtime(1.5f);
+        PassPause();
     }
 }

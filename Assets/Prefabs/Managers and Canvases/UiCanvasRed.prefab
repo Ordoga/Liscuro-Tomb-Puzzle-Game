@@ -969,6 +969,8 @@ MonoBehaviour:
     type: 3}
   restartButton: {fileID: 7313009616715244945}
   nextLevelButton: {fileID: 7313009618048995092}
+  lightPort: {fileID: 0}
+  darkPort: {fileID: 0}
 --- !u!1 &7313009617459525728
 GameObject:
   m_ObjectHideFlags: 0
