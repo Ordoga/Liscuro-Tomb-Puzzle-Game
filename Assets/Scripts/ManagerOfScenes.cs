@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using Cinemachine;
 
 public class ManagerOfScenes : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class ManagerOfScenes : MonoBehaviour
     public GameObject restartButton, nextLevelButton;
     public GameObject lightPort;
     public GameObject darkPort;
+    public CinemachineVirtualCamera fullView;
 
     private void Start()
     {
@@ -100,10 +102,11 @@ public class ManagerOfScenes : MonoBehaviour
     private IEnumerator ExampleCoroutine()
     {
         yield return new WaitForSeconds(0.2f);
+        fullView.GetComponent<CinemachineVirtualCamera>().Priority = 20;
+        yield return new WaitForSeconds(0.4f);
         lightPort.GetComponent<LightTeleport>().LightFade();
         darkPort.GetComponent<DarkTeleport>().DarkFade();
-        Time.timeScale = 0f;
-        yield return new WaitForSecondsRealtime(1.5f);
+        yield return new WaitForSecondsRealtime(2f);
         PassPause();
     }
 }

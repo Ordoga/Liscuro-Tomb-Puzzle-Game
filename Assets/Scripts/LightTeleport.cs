@@ -38,7 +38,7 @@ public class LightTeleport : MonoBehaviour
         if (startFading)
         {
             GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.white * intensity);
-            intensity += Time.unscaledDeltaTime * 3.1f;
+            intensity += Time.unscaledDeltaTime * 2.7f;
         }
 
     }

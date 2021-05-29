@@ -38,7 +38,7 @@ public class DarkTeleport : MonoBehaviour
         if (startFading)
         {
             GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.white * intensity);
-            intensity += Time.unscaledDeltaTime * 5f;
+            intensity += Time.unscaledDeltaTime * 4f;
         }
 
     }
