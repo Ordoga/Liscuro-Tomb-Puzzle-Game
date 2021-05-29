@@ -15,5 +15,6 @@ public class ToggleAnimation : MonoBehaviour
     void Update()
     {
         animator.SetBool("Light Active", gm.whiteActive);
+        animator.SetBool("Swap Enabled", gm.swapEnabled);
     }
 }
