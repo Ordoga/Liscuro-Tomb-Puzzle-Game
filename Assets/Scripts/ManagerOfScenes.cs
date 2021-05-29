@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using Cinemachine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.Experimental.Rendering.RenderGraphModule;
+
 
 public class ManagerOfScenes : MonoBehaviour
 {
@@ -19,8 +23,12 @@ public class ManagerOfScenes : MonoBehaviour
     private void Start()
     {
         Resume();
-        
+        gameManager = FindObjectOfType<GameManager>();
     }
+
+    
+
+
     void Update()
     {
         if (gameManager.levelPassed)
@@ -104,8 +112,10 @@ public class ManagerOfScenes : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         fullView.GetComponent<CinemachineVirtualCamera>().Priority = 20;
         yield return new WaitForSeconds(0.4f);
-        lightPort.GetComponent<LightTeleport>().LightFade();
         darkPort.GetComponent<DarkTeleport>().DarkFade();
+        lightPort.GetComponent<LightTeleport>().LightFade();
+        yield return new WaitForSeconds(0.4f);
+        gameManager.GetComponent<ColorAdjustments>().postExposure.value = 0f;
         yield return new WaitForSecondsRealtime(2f);
         PassPause();
     }
