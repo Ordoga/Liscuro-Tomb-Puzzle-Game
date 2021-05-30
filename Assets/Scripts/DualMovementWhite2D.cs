@@ -32,9 +32,9 @@ public class DualMovementWhite2D : MonoBehaviour
             movement.y = Input.GetAxisRaw("Vertical");
 
             if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
-                {
-                    jump = true;
-                }
+            {
+                jump = true;
+            }
         }
     }
 

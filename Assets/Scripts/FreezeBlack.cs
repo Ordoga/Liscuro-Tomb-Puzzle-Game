@@ -12,6 +12,7 @@ public class FreezeBlack : MonoBehaviour
     private GameObject currBurn;
     private float timerInFreeze;
     private bool activateTimer;
+    private bool soundPlayed;
 
     Rigidbody2D blackRb;
     Vector3 startingPos;
@@ -24,6 +25,7 @@ public class FreezeBlack : MonoBehaviour
     {
         darkSprite = FindObjectOfType<DualMovementBlack2D>().gameObject;
         activateTimer = false;
+        soundPlayed = false;
         blackRb = GetComponentInParent<Rigidbody2D>();
         startingPos = blackRb.position;
         timerInFreeze = timeAllowInFreeze;
@@ -63,6 +65,11 @@ public class FreezeBlack : MonoBehaviour
             currBurn = Instantiate(burnParticles, blackRb.transform.position, Quaternion.identity);
             blackRb.isKinematic = true;
             blackRb.gameObject.GetComponent<SpriteRenderer>().sprite = alarmed;
+            if (!soundPlayed)
+            {
+                GetComponent<AudioSource>().Play(0);
+                soundPlayed = true;
+            }
         }
     }
 
@@ -82,6 +89,8 @@ public class FreezeBlack : MonoBehaviour
             Destroy(currBurn);
             blackRb.isKinematic = false;
             blackRb.gameObject.GetComponent<SpriteRenderer>().sprite = relaxed;
+            GetComponent<AudioSource>().Stop();
+            soundPlayed = false;
         }
         //If the black rect leaves the map boundaries, teleport back to starting position
         if (collision.gameObject.CompareTag("Confiner"))

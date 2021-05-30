@@ -16,12 +16,14 @@ public class FollowHolder : MonoBehaviour
     Vector2 normalDir;
     SpriteRenderer sr;
     Rigidbody2D rb;
+    bool soundPlayed;
 
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        soundPlayed = false;
     }
 
     void Update()
@@ -31,7 +33,19 @@ public class FollowHolder : MonoBehaviour
         if (pickedUp)
         {
             transform.position = holderTransform.position; // Follows holder
-            
+            if (!soundPlayed)
+            {
+                GetComponent<AudioSource>().Play(0);
+                soundPlayed = true;
+            }
+        }
+        else
+        {
+            if (soundPlayed)
+            {
+                GetComponent<AudioSource>().Play(0);
+                soundPlayed = false;
+            }
         }
     }
 
