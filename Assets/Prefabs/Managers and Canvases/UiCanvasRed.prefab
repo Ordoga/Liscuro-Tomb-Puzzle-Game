@@ -971,6 +971,8 @@ MonoBehaviour:
   nextLevelButton: {fileID: 7313009618048995092}
   lightPort: {fileID: 0}
   darkPort: {fileID: 0}
+  fader: {fileID: 0}
+  fullView: {fileID: 0}
 --- !u!1 &7313009617459525728
 GameObject:
   m_ObjectHideFlags: 0
