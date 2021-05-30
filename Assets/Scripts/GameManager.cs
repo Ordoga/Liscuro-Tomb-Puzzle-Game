@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class GameManager : MonoBehaviour
 {
@@ -41,6 +43,7 @@ public class GameManager : MonoBehaviour
         rectSwitchCounter = 0;
         darkTilesPlaceCounter = 0;
         Cursor.visible = cursor;
+
     }
     private void Update()
     {
@@ -77,9 +80,8 @@ public class GameManager : MonoBehaviour
             levelFinished();
         }
 
-        
-
     }
+
     public void levelFinished()
     {
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -117,7 +119,7 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt(placement, darkTilesPlaceCounter);
         }
-        Debug.Log("previousNumOfDtPlacements"+ previousNumOfDtPlacements);
+
 
         //get a star for the current level completed
         PlayerPrefs.SetInt("Level " + currentSceneIndex + " completion",1);

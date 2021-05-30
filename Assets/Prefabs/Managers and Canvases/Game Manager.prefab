@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3654390878843086207}
   - component: {fileID: 3654390878843086206}
   - component: {fileID: 5122873413921227091}
-  - component: {fileID: 840453205329497598}
   - component: {fileID: 8282836408963478697}
   m_Layer: 0
   m_Name: Game Manager
@@ -52,6 +51,17 @@ MonoBehaviour:
   levelPassed: 0
   haltWhite: 0
   haltBlack: 0
+  cursor: 0
+  whiteStarts: 0
+  swapEnabled: 0
+  rectSwitchCounter: 0
+  darkTilesPlaceCounter: 0
+  previousNumOfSwitches: 0
+  previousNumOfDtPlacements: 0
+  currentLevel: 0
+  currentSceneIndex: 0
+  placement: 
+  switches: 
 --- !u!114 &5122873413921227091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,18 +103,6 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!114 &840453205329497598
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3654390878843086205}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2df23ff537dbe12479c9db245787de23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8282836408963478697
 MonoBehaviour:
   m_ObjectHideFlags: 0

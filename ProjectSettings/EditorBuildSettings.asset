@@ -30,6 +30,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Level 2 Revised.unity
     guid: a050e5c772181b8478f5ee0ece58ea92
   - enabled: 1
+    path: Assets/Scenes/Levels/Hard Level 1.unity
+    guid: c53cab3f88a0d8941bfcef166087f213
+  - enabled: 1
+    path: Assets/Scenes/Levels/Hard Level 2.unity
+    guid: 117dcc9d45ef8de4196b4cc1ae05f1fe
+  - enabled: 1
     path: Assets/Scenes/Levels.unity
     guid: 34b486d29ee79ee4dacd8adba856fb83
   m_configObjects: {}
