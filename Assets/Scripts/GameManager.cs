@@ -7,6 +7,8 @@ using UnityEngine.Rendering.Universal;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] AudioSource gameComplete1, gameComplete2, swapSound;
+
     public bool whiteActive = true;
     public bool lightPortalReady = false;
     public bool darkPortalReady = false;
@@ -60,11 +62,12 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && swapEnabled) // if i can move between characters
         {
-
+                swapSound.Play(0);
                 if (whiteActive) //make black active
                 {
                     whiteActive = false;
                     haltWhite = true;
+
                 }
                 else   //if dark active
                 {
@@ -78,6 +81,8 @@ public class GameManager : MonoBehaviour
         if (lightPortalReady && darkPortalReady)
         {
             levelFinished();
+            gameComplete1.Play(0);
+            gameComplete2.Play(0);
         }
 
     }

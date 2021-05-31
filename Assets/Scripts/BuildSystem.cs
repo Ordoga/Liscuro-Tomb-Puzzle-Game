@@ -12,6 +12,8 @@ public class BuildSystem : MonoBehaviour
     [SerializeField] Tile tile;
     [SerializeField] Sprite redHand;
     [SerializeField] Sprite RegularHand;
+    [SerializeField] AudioSource buildSound;
+    [SerializeField] AudioSource breakSound;
 
     public int availablePlatformsNum;
 
@@ -109,6 +111,7 @@ public class BuildSystem : MonoBehaviour
    
         darkTiles.SetTile(location, tile);
         availablePlatformsNum --;
+        buildSound.Play(0);
 
     }
 
@@ -117,6 +120,7 @@ public class BuildSystem : MonoBehaviour
 
         darkTiles.SetTile(location, null);
         availablePlatformsNum ++;
+        breakSound.Play(0);
     }
 
     private void SetGreenTile(Vector3Int position)
