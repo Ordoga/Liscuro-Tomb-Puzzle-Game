@@ -41,7 +41,7 @@ MonoBehaviour:
           sortingIgnore: 0
           shadowEffect: 0
           shadowEffectLayer: 0
-          maskEffect: 1
+          maskEffect: 0
           maskEffectDistance: 0
   eventPresets:
     list:
