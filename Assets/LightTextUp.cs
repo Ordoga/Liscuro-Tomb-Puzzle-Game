@@ -46,6 +46,5 @@ public class LightTextUp : MonoBehaviour
             material.SetFloat("_fade", fade);
             material.SetColor("_Color", Color.white);
         }
-
     }
 }
