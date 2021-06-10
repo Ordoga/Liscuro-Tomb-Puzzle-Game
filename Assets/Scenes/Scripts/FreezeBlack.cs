@@ -38,7 +38,7 @@ public class FreezeBlack : MonoBehaviour
         //if dark rect is freezed - timer activates
         if (activateTimer)
         {
-            fade -= (Time.deltaTime/5);
+            fade -= (Time.deltaTime/3);
 
             if (fade <= 0)
             {
