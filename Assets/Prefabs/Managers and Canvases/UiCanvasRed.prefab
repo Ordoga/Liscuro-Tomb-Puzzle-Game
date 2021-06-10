@@ -963,6 +963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d21e81a8beb55f0488d661edd2bffea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  darkener: 0.8
   nextLevelUi: {fileID: 7313009618037801005}
   pauseMenuUi: {fileID: 7313009617758318503}
   gameManager: {fileID: 3654390878843086206, guid: 83dd2959ea34e9041b4ca0dacac5c7c6,
@@ -1405,7 +1406,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7313009618037801004
 RectTransform:
   m_ObjectHideFlags: 0

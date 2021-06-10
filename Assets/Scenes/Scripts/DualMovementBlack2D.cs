@@ -30,7 +30,7 @@ public class DualMovementBlack2D : MonoBehaviour
         {
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
-            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+            if (Input.GetKeyDown("space"))
             {
                 jump = true;
             }

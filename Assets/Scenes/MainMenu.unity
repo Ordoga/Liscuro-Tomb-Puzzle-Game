@@ -191,6 +191,16 @@ PrefabInstance:
       propertyPath: brightnessEffect
       value: 
       objectReference: {fileID: 980339799}
+    - target: {fileID: 206195189765716976, guid: ed022c6eaaa372f498c83d69665e2adc,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 206195189765716976, guid: ed022c6eaaa372f498c83d69665e2adc,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 224302179844915822, guid: ed022c6eaaa372f498c83d69665e2adc,
         type: 3}
       propertyPath: m_AnchorMax.x

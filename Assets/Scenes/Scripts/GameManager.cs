@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
             haltWhite = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && swapEnabled) // if i can move between characters
+        if (Input.GetKeyDown("left shift") && swapEnabled) // if i can move between characters
         {
                 swapSound.Play(0);
                 if (whiteActive) //make black active
