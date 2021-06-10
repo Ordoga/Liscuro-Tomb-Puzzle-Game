@@ -24,6 +24,13 @@ public class ManagerOfScenes : MonoBehaviour
     public CinemachineVirtualCamera fullView;
     float darkness = 0f;
 
+    private int imageOfRank;
+    private int currentSceneIndex;
+    public GameObject Bronze;
+    public GameObject Silver;
+    public GameObject Gold;
+
+
     private void Start()
     {
         Resume();
@@ -65,6 +72,10 @@ public class ManagerOfScenes : MonoBehaviour
         pauseMenuUi.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+        Bronze.SetActive(false);
+        Silver.SetActive(false);
+        Gold.SetActive(false);
+
     }
     public void PassPause()
     {
@@ -74,8 +85,13 @@ public class ManagerOfScenes : MonoBehaviour
         GameIsPaused = true;
         Cursor.visible = true;
         nextLevelUi.SetActive(true);
+        levelRankSprite();
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(nextLevelButton);
+
+
+
+
     }
 
     public void Pause()
@@ -84,8 +100,10 @@ public class ManagerOfScenes : MonoBehaviour
         GameIsPaused = true;
         Cursor.visible = true;
         pauseMenuUi.SetActive(true);
+        levelRankSprite();
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(restartButton);
+
     }
 
     public void Restart()
@@ -110,12 +128,12 @@ public class ManagerOfScenes : MonoBehaviour
     }
     public void ChooseLevel()
     {
-        
+
         SceneManager.LoadScene("Levels");
         Cursor.visible = true;
         Resume();
     }
-    
+
 
     private IEnumerator ExampleCoroutine()
     {
@@ -128,5 +146,43 @@ public class ManagerOfScenes : MonoBehaviour
         startFade = true;
         yield return new WaitForSecondsRealtime(1.3f);
         PassPause();
+    }
+
+
+    public void levelRankSprite()
+    {
+        imageOfRank = 0;
+        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        //checks what is the best rank so far of this level
+
+        if (PlayerPrefs.GetInt("Level " + currentSceneIndex + " completion", 0) == 1)
+        {
+            imageOfRank = 2;
+        }
+        if (PlayerPrefs.GetInt("Level " + currentSceneIndex + " notBestNumOfSwitches", 0) == 1)
+        {
+            imageOfRank = 3;
+        }
+        if (PlayerPrefs.GetInt("Level " + currentSceneIndex + " bestNumOfSwitches", 0) == 1)
+        {
+            imageOfRank = 4;
+        }
+
+        //according to the imageOfRank var we can select the sprite that represent the rank of this level
+        if (imageOfRank == 2)
+        {
+            Bronze.SetActive(true);
+        }
+        else if (imageOfRank == 3)
+        {
+            Silver.SetActive(true);
+        }
+        else if (imageOfRank == 4)
+        {
+            Gold.SetActive(true);
+
+        }
+
     }
 }
