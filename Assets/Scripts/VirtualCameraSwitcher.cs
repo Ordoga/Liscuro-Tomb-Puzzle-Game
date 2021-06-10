@@ -24,6 +24,18 @@ public class VirtualCameraSwitcher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        
+        if(Input.GetKeyDown(KeyCode.M))
+            {
+            VirCarmeras[5].GetComponent<CinemachineVirtualCamera>().Priority = 17;
+        }
+        if (Input.GetKeyUp(KeyCode.M))
+        {
+            VirCarmeras[5].GetComponent<CinemachineVirtualCamera>().Priority = 1;
+        }
+
+
         currentDis = Vector3.Distance(white.transform.position, dark.transform.position);
         if (currentDis > maxDistance) {
             if (gameManager.whiteActive)
