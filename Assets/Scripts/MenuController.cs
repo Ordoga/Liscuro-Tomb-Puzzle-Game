@@ -146,7 +146,7 @@ namespace SpeedTutorMainMenuSystem
             if (buttonType == "LoadGame")
             {
                 menuDefaultCanvas.SetActive(false);
-                SceneManager.LoadScene("Levels");
+                SceneManager.LoadScene("Nerative");
             }
 
             if (buttonType == "NewGame")

@@ -17,6 +17,7 @@ public class VirtualCameraSwitcher : MonoBehaviour
 
     void Start()
     {
+
         gameManager = FindObjectOfType<GameManager>();
         StartCoroutine(ExampleCoroutine());
     }
@@ -29,10 +30,14 @@ public class VirtualCameraSwitcher : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.M))
             {
             VirCarmeras[5].GetComponent<CinemachineVirtualCamera>().Priority = 17;
+            white.GetComponent<DualMovementWhite2D>().enabled = false;
+            dark.GetComponent<DualMovementBlack2D>().enabled = false;
         }
         if (Input.GetKeyUp(KeyCode.M))
         {
             VirCarmeras[5].GetComponent<CinemachineVirtualCamera>().Priority = 1;
+            white.GetComponent<DualMovementWhite2D>().enabled = true;
+            dark.GetComponent<DualMovementBlack2D>().enabled = true;
         }
 
 
