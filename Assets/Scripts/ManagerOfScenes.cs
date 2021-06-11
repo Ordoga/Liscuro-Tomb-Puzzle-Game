@@ -21,6 +21,7 @@ public class ManagerOfScenes : MonoBehaviour
     public GameObject lightPort;
     public GameObject darkPort;
     public GameObject fader;
+   
     public CinemachineVirtualCamera fullView;
     float darkness = 0f;
 
@@ -30,8 +31,10 @@ public class ManagerOfScenes : MonoBehaviour
     public GameObject Silver;
     public GameObject Gold;
 
-    //public int[,] levelReqs;
+
+  
     public int levelSwitchesNum;
+    //temp req array, update it !
     public int[,] levelReqs = new int[10, 2] {
         /*dummyCell*/{0,0},
         {3,1},
@@ -54,6 +57,7 @@ public class ManagerOfScenes : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         fader.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
         startFade = false;
+        
     }
 
     void Update()
@@ -92,6 +96,7 @@ public class ManagerOfScenes : MonoBehaviour
         Bronze.SetActive(false);
         Silver.SetActive(false);
         Gold.SetActive(false);
+        
 
     }
     public void PassPause()
@@ -103,6 +108,8 @@ public class ManagerOfScenes : MonoBehaviour
         Cursor.visible = true;
         nextLevelUi.SetActive(true);
         levelRankSprite();
+
+        
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(nextLevelButton);
 
