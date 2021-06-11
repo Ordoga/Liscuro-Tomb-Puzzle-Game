@@ -67,6 +67,7 @@ public class ButtonManager : MonoBehaviour
     public void nextLevel()
     {
         SceneManager.LoadScene(buttonNum);
+        
     }
 
 }

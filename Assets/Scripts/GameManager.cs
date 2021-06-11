@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        swapEnabled = true;
+       
         whiteActive = whiteStarts;
 
         rectSwitchCounter = 0;
