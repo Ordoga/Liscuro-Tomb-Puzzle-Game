@@ -24,7 +24,7 @@ public class LevelSelect : MonoBehaviour
     Second for the less desired number of switches between charachters
     Third for the desired number of switches between charachters */
 
-    int[,] levelRequirements = new int[10, 2] {
+    public int[,] levelRequirements = new int[10, 2] {
         /*dummyCell*/{0,0},
         {3,1},
         {4,2},

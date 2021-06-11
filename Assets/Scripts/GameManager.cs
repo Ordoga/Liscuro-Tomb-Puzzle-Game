@@ -103,6 +103,7 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt(switches, rectSwitchCounter);
         }
+
         if (previousNumOfDtPlacements == darkTilesPlaceCounter)
         {
             PlayerPrefs.SetInt(placement, darkTilesPlaceCounter);

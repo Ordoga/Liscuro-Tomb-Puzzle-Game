@@ -30,9 +30,26 @@ public class ManagerOfScenes : MonoBehaviour
     public GameObject Silver;
     public GameObject Gold;
 
+    //public int[,] levelReqs;
+    public int levelSwitchesNum;
+    public int[,] levelReqs = new int[10, 2] {
+        /*dummyCell*/{0,0},
+        {3,1},
+        {4,2},
+        {3,2},
+        {4,2},
+        {3,1},
+        {4,2},
+        {7,4},
+      /*change*/  {5,5},
+     /*change*/   {5,5 }
+    };
+
+
 
     private void Start()
     {
+        //levelReqs = FindObjectOfType<LevelSelect>().levelRequirements;
         Resume();
         gameManager = FindObjectOfType<GameManager>();
         fader.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
@@ -47,7 +64,7 @@ public class ManagerOfScenes : MonoBehaviour
             if (startFade)
             {
                 darkness += Time.deltaTime * darkener;
-                Debug.Log(darkness);
+
                 fader.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, darkness);
 
             }
@@ -151,22 +168,26 @@ public class ManagerOfScenes : MonoBehaviour
 
     public void levelRankSprite()
     {
-        imageOfRank = 0;
+
+        imageOfRank = 2;
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        levelSwitchesNum = FindObjectOfType<GameManager>().rectSwitchCounter;
 
-        //checks what is the best rank so far of this level
 
-        if (PlayerPrefs.GetInt("Level " + currentSceneIndex + " completion", 0) == 1)
-        {
-            imageOfRank = 2;
-        }
-        if (PlayerPrefs.GetInt("Level " + currentSceneIndex + " notBestNumOfSwitches", 0) == 1)
+
+        //if the number of switches is less or equal than the less desired requirement
+        if (levelSwitchesNum <= levelReqs[currentSceneIndex,0])
         {
             imageOfRank = 3;
         }
-        if (PlayerPrefs.GetInt("Level " + currentSceneIndex + " bestNumOfSwitches", 0) == 1)
+
+
+        //if the number of switches is less or equal than the best requirement
+        if (levelSwitchesNum <= levelReqs[currentSceneIndex, 1])
         {
+
             imageOfRank = 4;
+
         }
 
         //according to the imageOfRank var we can select the sprite that represent the rank of this level
@@ -183,6 +204,5 @@ public class ManagerOfScenes : MonoBehaviour
             Gold.SetActive(true);
 
         }
-
     }
 }
