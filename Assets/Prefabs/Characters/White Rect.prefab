@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 1294168415647131115}
   - component: {fileID: 1294168415647131126}
   - component: {fileID: 5168388870300852779}
+  - component: {fileID: 8140060622990095601}
   m_Layer: 9
   m_Name: White Rect
   m_TagString: LightRect
@@ -338,6 +339,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &8140060622990095601
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294168415647131112}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 832210eb00c324044a184f2df19aeb92, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1294168416337126734
 GameObject:
   m_ObjectHideFlags: 0

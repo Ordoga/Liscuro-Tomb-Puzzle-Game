@@ -12,14 +12,18 @@ public class DualMovementWhite2D : MonoBehaviour
     bool jump = false;
     GameManager gameManager;
     Rigidbody2D rb;
+    Animator anim;
 
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
     void Update()
     {
+        anim.SetBool("White active", gameManager.whiteActive);
+
         if (gameManager.haltWhite)
         {
             rb.velocity = Vector2.zero;
